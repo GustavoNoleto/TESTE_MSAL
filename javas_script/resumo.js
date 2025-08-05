@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     if (token && username) {
         try {
-            const response = await axios.get(`http://192.168.0.55:5000/4Shark/ResumoMinio`, {
+            const response = await axios.get(`https://2408ad7e9de7.ngrok-free.app/4Shark/ResumoMinio`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
