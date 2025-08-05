@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column; /* Para melhor adaptação de layout em dispositivos móveis */
+    
+}
+
+/* Botão usado para abrir a barra lateral */
+.fechar button {
+    font-size: 40px;
+    background-color: #3E8E41;
+    border: none; /* Remover borda */
+    color: #FFDE00;
+    cursor: pointer;
+    margin-left: 220px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    margin-left: 0;
+    z-index: 1001; /* Garante que o botão fique acima da sidebar */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-grow: 1;
+}
+
+/* Barra Lateral */
+.sidebar {
+    background-color: #3E8E41;
+    width: 250px;
+    color: white;
+    position: fixed; /* Sidebar fixa no lado esquerdo */
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow-x: hidden; /* Esconder overflow horizontal */
+    /*transition: 0.3s;*/
+}
+
+.user-profile {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.user-profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.user-profile h3 {
+    margin-top: 10px;
+}
+
+.menu {
+    margin-top: 30px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.menu li {
+    margin-bottom: 15px;
+    
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+}
+
+.menu li:hover {
+    background-color: #575757;
+    padding-left: 10px;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #f4f4f4;
+    margin-left: 250px; /* Espaço deixado pela sidebar */
+    /* background: url('https://img.freepik.com/vetores-gratis/fundo-abstrato-gradiente-monocromatico_52683-74300.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    transition: margin-left 0.3s; /* Animação ao abrir/fechar sidebar */
+}
+.main-content.expanded {
+    margin-left: 0; /* O conteúdo principal ocupa toda a largura */
+}
+
+.apagar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.plan-header {
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.plan-header h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.plan-header p {
+    color: gray;
+}
+
+.reward-section {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.reward-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 420px;
+    margin: 10px;
+}
+
+.reward-box h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.amount {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.details-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Incentivos e Metas */
+.incentives {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 80px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.incentives h3 {
+    font-size: em;
+    margin-bottom: 10px;
+}
+
+/* Estilizar o contêiner que envolve as metas */
+.Metas-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.Metas {
+    flex: 1;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 300px;
+}
+
+/* Estilizando o seletor de ano fiscal */
+.fiscal-year-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.fiscal-year-filter select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #3E8E41;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 200px;
+}
+
+.fiscal-year-filter select:hover,
+.fiscal-year-filter select:focus {
+    border-color: #FFDE00; /* Cor de destaque quando o seletor for focado ou estiver em hover */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.fiscal-year-filter button {
+    background-color: #3E8E41;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fiscal-year-filter button:hover {
+    background-color: #FFDE00;
+    color: #333;
+}
+
+/* Responsividade: ajustes para o seletor em dispositivos móveis */
+@media (max-width: 3000px) {
+    .sidebar.hidden {
+        width: 0;
+        overflow: hidden;
+    }
+}
+@media (max-width: 1000px) {
+
+    .user-profile {
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto; /* Ajusta a altura da sidebar */
+        position: relative; /* Para telas menores, sidebar se torna relativa */
+    }
+
+    .sidebar.hidden {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .main-content.expanded {
+        margin-top: 0; /* O conteúdo principal ocupa toda a largura */
+    }
+    
+    .main-content {
+        margin-left: 0; /* Conteúdo ocupa 100% da tela quando sidebar for fechada */
+        padding: 20px;
+    }
+
+    .apagar {
+        flex-direction: column;
+    }
+
+    .reward-section {
+        justify-content: center;
+    }
+
+    .Metas-container {
+        flex-direction: column;
+    }
+
+    .fiscal-year-filter {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 15px;
+    }
+
+    .fiscal-year-filter select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .fiscal-year-filter button {
+        width: 100%;
+    }
+}
+
+/* Ajustes para celulares */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+    }
+
+    .openbtn {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .reward-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .Metas-container {
+        flex-direction: column;
+    }
+
+    .Metas {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .plan-header {
+        width: 100%;
+    }
+
+    .incentives {
+        margin-top: 30px;
+    }
+}

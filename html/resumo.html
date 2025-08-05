@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Página de Comissão</title>
+    <link rel="stylesheet" href="../css/resumo.css">
+    <link rel="icon" type="image/x-icon" href="https://cdn.appdealersites.com.br/dealersites/modelo-john-deere/logos/Group%208.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <!-- Barra Lateral -->
+        <div class="sidebar" id="sidebar">
+            <!-- Usuario -->
+            <div class="user-profile">
+                <img src="https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=NQOIh2MeArGQtA&pid=ImgRaw&r=0" alt="Usuário">
+                <p id="Usuário"></p>
+            </div>
+            
+            <!-- Botão Fechar -->
+            <div class="fechar" id="fechar">
+                <button onclick="closeNav()">&times;</button>
+            </div>
+
+            <!-- Itens Navegação -->
+            <nav class="menu">
+                <ul>
+                    <li style="color: #FFDE00;"> <i class="fa-solid fa-file"></i> Resumo</li>
+                    <li><a href="detalhado.html"><i class="fa-solid fa-money-bill-transfer"></i> Transações</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+
+        <!-- Conteúdo Principal -->
+        <div class="main-content" id="main-content">
+            <!-- Botão Abrir -->
+             
+            <div>
+                <button class="openbtn" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
+            </div>
+
+            <!-- Cabeçalho -->
+            <div class="apagar">
+                <!-- Periodo -->
+                <div class="plan-header">
+                    <h2>Plano:</h2>
+                    <h1 id="FY"></h1>
+                    <p id="Periodicidade"></p>
+                </div>
+
+                <!-- Valor Comissão-->
+                <div class="reward-section">
+                    <!-- Valor Comissão-->
+                    <div class="reward-box">
+                        <h2>Prêmio (Valor) </h2>
+                        <p class="amount" id="Premio"></p>
+                    </div>
+
+                    <!-- Botão e seletor de Ano Fiscal -->
+                    <div class="fiscal-year-filter">
+                        <select id="fiscalYearSelect">
+                            <option value="" disabled selected>Selecione o Ano Fiscal</option>
+                        </select>
+                        <button id="filterButton">Filtrar <i class="fa-solid fa-filter"></i></button>
+                    </div> 
+                </div>
+            </div>
+
+            <!-- Parte do Incentivo -->
+            <div>
+                <h2>Incentivos</h2>
+            </div>
+
+            <div class="incentives">
+                <p><strong>Premiação Serviços</strong></p>
+                <br>
+                <p id="Premio2"></p>
+            </div>
+
+            <div>
+                <h2>Metas</h2>
+            </div>
+
+            <!-- Contêiner das Metas -->
+            <div class="Metas-container">
+                <div class="Metas">
+                    <p><strong>Percentual Premiação</strong></p>
+                    <br>
+                    <p id="Percentual"></p>
+                </div>
+            
+                <div class="Metas">
+                    <p><strong>Faturamento Líquido</strong></p>
+                    <br>
+                    <p id="Premio3"></p>
+                </div>               
+            </div>
+        </div>
+    </div>
+
+<script src="../javas_script/resumo.js"></script>
+</body>
+</html>

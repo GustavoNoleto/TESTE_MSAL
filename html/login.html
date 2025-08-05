@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login Comissões</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.appdealersites.com.br/dealersites/modelo-john-deere/logos/Group%208.png">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
+</head>
+<body>
+    <div id="LogoLavronorte" class="logoContainer">
+        <img src="https://4shark-assets.s3.amazonaws.com/lavronorte/lavronorte-logo.png" alt="Logo Lavronorte" id="Logo">
+    </div>
+
+    <div id="loginSection" class="logincontainer">
+        <form id="loginForm">
+            <button type="submit">
+                <i class="fa-brands fa-microsoft"></i> Entrar com Microsoft
+            </button>
+        </form>
+        <div id="response" class="response"></div>
+    </div>
+
+    <script>
+        const msalConfig = {
+            auth: {
+                clientId: "817bba57-5d3f-41ae-82fc-cefb5febd08c", // Seu clientId
+                authority: "https://login.microsoftonline.com/3ce9f1fb-3751-4eea-be2e-b8e1c09c90d8", // Seu tenantId
+                redirectUri: window.location.origin + "/resumo.html", // Página pós-login
+            },
+            cache: {
+                cacheLocation: "sessionStorage", // ou "localStorage"
+                storeAuthStateInCookie: false,
+            }
+        };
+
+        const msalInstance = new msal.PublicClientApplication(msalConfig);
+
+        const loginRequest = {
+            scopes: ["User.Read"]
+        };
+
+        document.getElementById("loginForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            try {
+                // Faz o login via popup
+                const loginResponse = await msalInstance.loginPopup(loginRequest);
+                const account = loginResponse.account;
+
+                // Guarda informações básicas
+                sessionStorage.setItem('username', account.username);
+
+                const tokenResponse = await msalInstance.acquireTokenSilent({
+                    ...loginRequest,
+                    account: account
+                });
+
+                sessionStorage.setItem('token', tokenResponse.accessToken);
+
+                // Redireciona após login
+                window.location.href = "resumo.html";
+            } catch (error) {
+                console.error("Erro no login:", error);
+                document.getElementById("response").innerText = "Erro no login: " + error.message;
+            }
+        });
+    </script>
+</body>
+</html>

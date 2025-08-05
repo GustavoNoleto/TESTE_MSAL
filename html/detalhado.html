@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Página de Comissão</title>
+    <link rel="stylesheet" href="../css/detalhado.css">
+    <link rel="icon" type="image/x-icon" href="https://cdn.appdealersites.com.br/dealersites/modelo-john-deere/logos/Group%208.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Barra Lateral -->
+        <div class="sidebar">
+            <div class="user-profile">
+                <img src="https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=NQOIh2MeArGQtA&pid=ImgRaw&r=0" alt="Usuário">
+                <p id="Usuário"></p>
+            </div>
+
+            <div class="fechar" id="fechar">
+                <button onclick="closeNav()">&times;</button>
+            </div>
+
+            <nav class="menu">
+                <ul>
+                    <li><a href="resumo.html"><i class="fa-solid fa-file"></i></i> <strong>Resumo</strong></li>
+                    <li style="color: #FFDE00;"> <i class="fa-solid fa-money-bill-transfer"></i><strong>Transações</strong></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <!-- Conteúdo Principal -->
+        <div class="main-content">
+
+            <div>
+                <button class="openbtn" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            
+            <h1>Transações</h1>
+            <p>Listagem</p>
+
+            <!-- Tabela -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Efetiva</th>
+                        <th>Usuário</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-transacoes">
+                    <!-- Linhas da tabela serão preenchidas dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="sidebar2">
+    </div>
+
+    <script src="../javas_script/detalhado.js"></script>
+</body>
+</html>

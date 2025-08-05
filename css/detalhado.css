@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+.fechar button {
+    font-size: 40px;
+    background-color: #3E8E41;
+    border: none; /* Remover borda */
+    color: #FFDE00;
+    cursor: pointer;
+    margin-left: 200px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    margin-left: 0;
+    z-index: 1001; /* Garante que o botão fique acima da sidebar */
+  }
+
+
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* Barra Lateral */
+.sidebar {
+    background-color: #3E8E41;
+    width: 250px;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar2 {
+    background-color: #3E8E41;
+    width: 155px;
+}
+
+.user-profile {
+    text-align: center;
+}
+
+.user-profile img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.menu {
+    margin-top: 30px;
+}
+
+.menu ul {
+    list-style-type: none;
+}
+
+.menu li {
+    margin-bottom: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #f4f4f4;
+}
+
+.main-content h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+tbody td {
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 1000px) {
+
+    .sidebar.hidden {
+            width: 0;
+            overflow: hidden;
+        }
+    
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar{
+        width: 100%;
+    }
+    
+    .sidebar2{
+        width: 0%;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content h1 {
+        font-size: 1.5em;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
