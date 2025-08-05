@@ -1,36 +1,43 @@
-let token = ''; // Variável para armazenar o token
+const msalConfig = {
+    auth: {
+        clientId: "817bba57-5d3f-41ae-82fc-cefb5febd08c", // Seu clientId
+        authority: "https://login.microsoftonline.com/3ce9f1fb-3751-4eea-be2e-b8e1c09c90d8", // Seu tenantId
+        redirectUri: window.location.origin + "/resumo.html", // Página pós-login
+    },
+    cache: {
+        cacheLocation: "sessionStorage", // ou "localStorage"
+        storeAuthStateInCookie: false,
+    }
+};
 
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
+const msalInstance = new msal.PublicClientApplication(msalConfig);
+
+const loginRequest = {
+    scopes: ["User.Read"]
+};
+
+document.getElementById("loginForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    const payload = {
-        "username": username,
-        "password": password
-    };
-
     try {
-        // Exibe a mensagem "Efetuando login..."
-        document.getElementById('response').innerText = 'Efetuando login...';
+        // Faz o login via popup
+        const loginResponse = await msalInstance.loginPopup(loginRequest);
+        const account = loginResponse.account;
 
-        // Envia o request de login usando axios
-        const response = await axios.post('https://1e86-138-219-192-138.ngrok-free.app/auth/login', payload);
-        token = response.data.access_token;  // Armazena o token
+        // Guarda informações básicas
+        sessionStorage.setItem('username', account.username);
 
-        // Armazena o token e o username no localStorage
-        sessionStorage.setItem('token', token);
-        sessionStorage.setItem('username', username);
+        const tokenResponse = await msalInstance.acquireTokenSilent({
+            ...loginRequest,
+            account: account
+        });
 
-        // Exibe mensagem de sucesso
-        document.getElementById('response').innerText = 'Login bem-sucedido';
+        sessionStorage.setItem('token', tokenResponse.accessToken);
 
-        // Redireciona para a página de resumo
-        setTimeout(() => {
-            window.location.href = 'resumo.html';
-        }, 1000); 
+        // Redireciona após login
+        window.location.href = "resumo.html";
     } catch (error) {
-        document.getElementById('response').innerText = 'Erro no login: ' + error.message;
+        console.error("Erro no login:", error);
+        document.getElementById("response").innerText = "Erro no login: " + error.message;
     }
-});
+})
